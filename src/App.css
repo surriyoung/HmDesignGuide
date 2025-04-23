@@ -301,6 +301,7 @@ html[data-theme="dark"] {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 17px;
 }
 .main-title-wrap .main-title {
   font-size: 1.15rem;
@@ -341,6 +342,7 @@ html[data-theme="dark"] {
 .box {
   border: 1px solid var(--line);
   border-radius: 5px;
+  overflow: hidden;
 }
 .box:not(:last-child) {
   margin-bottom: 17px;
