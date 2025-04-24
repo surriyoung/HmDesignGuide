@@ -11,11 +11,18 @@ const Anniversary = () => {
       const year = new Date().getFullYear();
       const month = (new Date().getMonth() + 1).toString().padStart(2, "0");
       const url = `https://apis.data.go.kr/B090041/openapi/service/SpcdeInfoService/getRestDeInfo?serviceKey=${serviceKey}&solYear=${year}&solMonth=${month}&_type=json`;
-
+      const test = await axios.get(url);
+      console.log(test.data)
       try {
-        const response = await axios.get(url);
-        const items = response.data.response.body.items?.item || [];
-        setHolidays(items);
+        const responseData = await axios.get(url);
+        const responseBody = responseData.data.response;
+        console.log(responseBody)
+        if (responseBody && responseBody.body && responseBody.body.items) {
+          const items = responseBody.body.items.item || [];
+          setHolidays(items);
+        } else {
+          console.error("공휴일 데이터가 없습니다.");
+        }
       } catch (error) {
         console.error("공휴일 데이터를 불러오는 데 실패했습니다.", error);
       }
