@@ -1,8 +1,12 @@
-const Home = () => {
+import React from "react";
+import UserInfo from "../components/UserInfo";
+import Calendar from "../components/Calendar";
+
+const Home = ({ user }) => {
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1>가이드 홈</h1>
-      <p>홈!!!</p>
+    <div className="main-tile-wrap">
+      <UserInfo user={user} />
+      <Calendar />
     </div>
   );
 };

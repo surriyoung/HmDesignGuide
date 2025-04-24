@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
-import Menu from "../../assets/icons/menu.svg";
 
 const Depth1Menu = ({ onMenuClick }) => (
   <ul className="depth1">
     <li>
-      <span className="menu">
+      <span className="menu icon-menu">
         <Link to="/">
           <svg
             width="24"
@@ -21,10 +20,11 @@ const Depth1Menu = ({ onMenuClick }) => (
             />
           </svg>
         </Link>
+        <span className="tooltip">홈</span> {/* 툴팁 추가 */}
       </span>
     </li>
     <li>
-      <span className="menu" onClick={onMenuClick}>
+      <span className="menu icon-menu" onClick={() => onMenuClick("메뉴")}>
         <svg
           width="24"
           height="24"
@@ -37,6 +37,7 @@ const Depth1Menu = ({ onMenuClick }) => (
             fill="#333333"
           />
         </svg>
+        <span className="tooltip">메뉴</span> {/* 툴팁 추가 */}
       </span>
     </li>
   </ul>

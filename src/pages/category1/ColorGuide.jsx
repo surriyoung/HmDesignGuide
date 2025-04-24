@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import PaletteSection from "../../components/PaletteSection";
+import BoxLayout from "../../components/BoxLayout";
+import ContentTitle from "../../components/ContentTitle";
 
-const ColorGuide = () => {
-  const [theme, setTheme] = useState("light");
+const ColorGuide = ({ theme }) => {
   const [colorValues, setColorValues] = useState({
     static: [],
     themed: {
@@ -73,89 +75,34 @@ const ColorGuide = () => {
   };
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
     getColorsFromRoot();
   }, [theme]);
 
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
-  };
-
   return (
     <div>
-      <div className="main-title-wrap">
-        <h2 className="main-title">색상 가이드</h2>
-        <div className="toggle-switch mode-toggle">
-          <label className="switch">
-            <input
-              type="checkbox"
-              checked={theme === "dark"}
-              onChange={toggleTheme}
-            />
-            <span className="slider round"></span>
-          </label>
-        </div>
-      </div>
-      <section className="box">
-        <h3 className="box-title">🎨 Static Colors</h3>
-        <div className="box-content color-palette">
-          {colorValues.static.map((color) => (
-            <div key={color.var} className="color-box">
-              <div
-                className="color-chip"
-                style={{ background: color.hex }}
-              ></div>
-              {color.label}: {color.var}
-            </div>
-          ))}
-        </div>
-      </section>
+      <ContentTitle title={"색상 가이드"} />
 
-      <section className="box">
-        <h3 className="box-title">
-          {theme === "light" ? "🌞 Light Mode" : "🌙 Dark Mode"}
-        </h3>
+      <BoxLayout title="Static Colors">
+        <PaletteSection colors={colorValues.static} colorPalette />
+      </BoxLayout>
 
-        {/* Depth Colors */}
-        <div className="box-content">
-          <h3 className="content-title">Depth Colors</h3>
-          <div className="color-palette">
-            {colorValues.themed.depth.map((color) => (
-              <div key={color.var} className="color-box">
-                <div
-                  className="color-chip"
-                  style={{ background: color.hex }}
-                ></div>
-                {color.label}: {color.var}
-              </div>
-            ))}
-          </div>
-          <h3 className="content-title">Text Colors</h3>
-          <div className="color-palette">
-            {colorValues.themed.text.map((color) => (
-              <div key={color.var} className="color-box">
-                <div
-                  className="color-chip"
-                  style={{ background: color.hex }}
-                ></div>
-                {color.label}: {color.var}
-              </div>
-            ))}
-          </div>
-          <h3 className="content-title">Contents Colors</h3>
-          <div className="color-palette">
-            {colorValues.themed.contents.map((color) => (
-              <div key={color.var} className="color-box">
-                <div
-                  className="color-chip"
-                  style={{ background: color.hex }}
-                ></div>
-                {color.label}: {color.var}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <BoxLayout title="Theme Colors">
+        <PaletteSection
+          title="Depth Colors"
+          colors={colorValues.themed.depth}
+          colorPalette
+        />
+        <PaletteSection
+          title="Text Colors"
+          colors={colorValues.themed.text}
+          colorPalette
+        />
+        <PaletteSection
+          title="Contents Colors"
+          colors={colorValues.themed.contents}
+          colorPalette
+        />
+      </BoxLayout>
     </div>
   );
 };
