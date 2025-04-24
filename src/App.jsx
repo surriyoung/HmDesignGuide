@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import HmDesignGuide from "./pages/HmDesignGuide";
+
 import ColorGuide from "./pages/category1/ColorGuide";
 import FontGuide from "./pages/category1/FontGuide";
 import TableGuide from "./pages/category2/TableGuide";
