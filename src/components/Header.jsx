@@ -31,7 +31,7 @@ const Header = ({ theme, toggleTheme, user }) => {
               fill="#787878"
             />
           </svg>
-          <span class="tooltip">로그아웃</span>
+          <span className="tooltip">로그아웃</span>
         </button>
       </div>
     </header>

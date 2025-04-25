@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import SearchBox from "./SearchBox";
-import SearchResults from "./searchMenu/SearchResults";
-import RecentSearches from "./searchMenu/RecentSearches";
+import SearchBox from "../SearchBox";
+import SearchResults from "../searchMenu/SearchResults";
+import RecentSearches from "../searchMenu/RecentSearches";
 
 const MenuSearchBox = () => {
   const [searchQuery, setSearchQuery] = useState("");

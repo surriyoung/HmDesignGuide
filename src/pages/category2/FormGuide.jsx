@@ -1,5 +1,7 @@
 import BoxLayout from "../../components/BoxLayout";
+import Button from "../../components/Button";
 import FormLayout from "../../components/FormLayout";
+import ArrowIcon from "../../assets/icons/ArrowIcon";
 
 const FormGuide = () => {
   const parkingTypeOptions = [
@@ -48,8 +50,14 @@ const FormGuide = () => {
           options={parkingTypeOptions}
         />
         <FormLayout title="RadioButton" type="radio" options={genderOptions} />
-        <FormLayout title="야간 개방 여부" type="toggle" />
+        <FormLayout title="토글" type="toggle" />
         <BoxLayout title="다중선택 체크박스">
+          <div className="btn-list">
+            <Button name="선택해제" />
+            <Button name="토글">
+              <ArrowIcon />
+            </Button>
+          </div>
           <FormLayout
             title="다중선택"
             type="check"
@@ -58,6 +66,12 @@ const FormGuide = () => {
           />
         </BoxLayout>
         <BoxLayout title="단일선택 체크박스">
+          <div className="btn-list">
+            <Button name="선택해제" />
+            <Button name="토글">
+              <ArrowIcon />
+            </Button>
+          </div>
           <FormLayout
             title="단일선택"
             type="check"

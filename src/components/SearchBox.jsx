@@ -1,10 +1,17 @@
 function SearchBox({ searchQuery, handleSearchChange, handleSearchSubmit }) {
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSearchSubmit();
+    }
+  };
+
   return (
     <div className="search-box">
       <input
         type="text"
         value={searchQuery}
         onChange={handleSearchChange}
+        onKeyDown={handleKeyDown} // 추가된 부분
         placeholder="메뉴를 검색하세요"
       />
       <button onClick={handleSearchSubmit}>
@@ -24,4 +31,5 @@ function SearchBox({ searchQuery, handleSearchChange, handleSearchSubmit }) {
     </div>
   );
 }
+
 export default SearchBox;

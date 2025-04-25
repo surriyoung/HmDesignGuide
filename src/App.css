@@ -105,8 +105,14 @@ html[data-theme="dark"] {
   --secondary-btn-text: #333333;
 }
 /* 버튼 */
+.btn-list {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
 /* 기본버튼 */
 .basic-btn {
+  height: 34px;
   padding: 8px 16px;
   border-radius: 5px;
   border: 1px solid var(--line2);
@@ -139,6 +145,17 @@ html[data-theme="dark"] {
 }
 .danger-btn:disabled {
   background-color: var(--danger-btn-disabled-bg);
+}
+.icon-btn {
+  width: 34px;
+  padding: 5px;
+  background-color: var(--primary-btn-bg);
+}
+.icon-btn:hover {
+  background-color: var(--primary-btn-hover-bg);
+}
+.icon-btn svg path {
+  fill: var(--primary-btn-text);
 }
 /* 상태태그 */
 .state-tag {
@@ -633,6 +650,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.content-title-wrap:not(.box-title) {
   margin-bottom: 17px;
 }
 .content-title-wrap:not(:first-child) {
@@ -676,6 +695,7 @@ header {
 }
 /* 박스 */
 .box {
+  width: 100%;
   border: 1px solid var(--line);
   border-radius: 5px;
   overflow: hidden;
@@ -687,13 +707,13 @@ header {
 .box .box-title {
   background-color: var(--th);
   border-bottom: 1px dashed var(--line);
-  height: 34px;
+  height: 45px;
   font-size: 18px;
   font-weight: 700;
   color: var(--text1);
   display: flex;
   align-items: center;
-  padding: 0 16px;
+  padding: 5px 16px;
 }
 .box .box-content {
   padding: 15px;
@@ -775,9 +795,16 @@ header {
   border-bottom: none;
 }
 /* 홈 */
-.main-tile-wrap {
+.main-tile-wrapper {
   display: flex;
   column-gap: 30px;
+}
+.main-tile-wrap h4 {
+  padding-left: 5px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text3);
 }
 .main-tile {
   padding: 30px;
@@ -807,15 +834,20 @@ header {
   border-radius: 50%;
   border: 1px solid var(--line);
 }
+.user-info .user-info-bot {
+  border-top: 1px solid var(--line2);
+  margin-top: 30px;
+  padding: 25px 10px;
+  height: 100%;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
 .user-info .user-info-bot li {
   display: flex;
   align-items: center;
   column-gap: 15px;
   color: var(--text1);
-  margin-bottom: 20px;
-}
-.user-info .user-info-bot li:last-child {
-  margin-bottom: 0;
 }
 /* 홈 캘린더 */
 /* 주간 캘린더 */
@@ -972,7 +1004,7 @@ header {
 .recent-searches {
   border-top: 1px solid var(--line2);
   margin-top: 30px;
-  padding-top: 20px;
+  padding-bottom: 25px;
   height: 100%;
 }
 @media screen and (max-width: 1024px) {

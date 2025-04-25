@@ -87,21 +87,23 @@ const ColorGuide = ({ theme }) => {
       </BoxLayout>
 
       <BoxLayout title="Theme Colors">
-        <PaletteSection
-          title="Depth Colors"
-          colors={colorValues.themed.depth}
-          colorPalette
-        />
-        <PaletteSection
-          title="Text Colors"
-          colors={colorValues.themed.text}
-          colorPalette
-        />
-        <PaletteSection
-          title="Contents Colors"
-          colors={colorValues.themed.contents}
-          colorPalette
-        />
+        <div>
+          <PaletteSection
+            title="Depth Colors"
+            colors={colorValues.themed.depth}
+            colorPalette
+          />
+          <PaletteSection
+            title="Text Colors"
+            colors={colorValues.themed.text}
+            colorPalette
+          />
+          <PaletteSection
+            title="Contents Colors"
+            colors={colorValues.themed.contents}
+            colorPalette
+          />
+        </div>
       </BoxLayout>
     </div>
   );
