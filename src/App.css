@@ -798,10 +798,18 @@ header {
 .main-tile-wrapper {
   display: flex;
   column-gap: 30px;
+  height: 100%;
+}
+.main-tile-wrapper .main-tile-wrap {
+  display: flex;
+  width: calc(100% / 4);
+  min-width: 390px;
+  height: 510px;
+  flex-direction: column;
+  row-gap: 20px;
 }
 .main-tile-wrap h4 {
   padding-left: 5px;
-  margin-bottom: 20px;
   font-size: 20px;
   font-weight: 700;
   color: var(--text3);
@@ -810,12 +818,12 @@ header {
   padding: 30px;
   border-radius: 30px;
   border: 1px solid var(--line);
-  width: 390px;
-  height: 470px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
+/* 진행상황 */
 /* 유저 정보 */
 .user-info .user-info-top {
   display: flex;
