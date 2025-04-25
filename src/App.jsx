@@ -2,7 +2,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import HmDesignGuide from "./pages/HmDesignGuide";
+import Home from "./pages/Home";
 
 import ColorGuide from "./pages/category1/ColorGuide";
 import FontGuide from "./pages/category1/FontGuide";
@@ -36,7 +36,7 @@ const App = () => {
   return (
     <>
       <Header theme={theme} toggleTheme={toggleTheme} user={user} />
-      <Router>
+      <Router basename="/HmDesignGuide">
         <div className="main-wrapper">
           <Navbar />
           <main>
@@ -44,7 +44,8 @@ const App = () => {
             <div className="main-wrap">
               <div className="main-content">
                 <Routes>
-                  <Route path="/HmDesignGuide" element={<HmDesignGuide user={user} />} />
+                  {/* <Route path="/" element={<HmDesignGuide user={user} />} /> */}
+                  <Route path="/" element={<Home user={user} />} />
                   <Route path="/color" element={<ColorGuide />} />
                   <Route path="/font-size" element={<FontGuide />} />
                   <Route path="/table" element={<TableGuide />} />

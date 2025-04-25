@@ -1,12 +1,22 @@
 import BoxLayout from "../../components/BoxLayout";
-import ContentTitle from "../../components/ContentTitle";
+import FormLayout from "../../components/FormLayout";
 
 const FormGuide = () => {
+  const parkingTypeOptions = [
+    { value: "underground", label: "지하" },
+    { value: "ground", label: "지상" },
+    { value: "mechanical", label: "기계식" },
+  ];
+
   return (
-    <>
-      <ContentTitle title="폼 레이아웃" />
-      <BoxLayout title="박스">여기에 폼 레이아웃 만들기</BoxLayout>
-    </>
+    <BoxLayout title="폼 가이드">
+      <FormLayout title="주차장 코드" type="input" />
+      <FormLayout
+        title="주차장 유형"
+        type="select"
+        options={parkingTypeOptions}
+      />
+    </BoxLayout>
   );
 };
 

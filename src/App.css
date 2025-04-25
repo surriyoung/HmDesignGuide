@@ -243,6 +243,9 @@ html[data-theme="dark"] {
 svg path {
   fill: var(--text2);
 }
+.strong {
+  color: var(--text-emphasis);
+}
 /* 헤더 */
 header {
   display: flex;
@@ -748,6 +751,9 @@ header {
   color: var(--secondary-btn-text);
 }
 @media screen and (max-width: 1024px) {
+  .icon-menu:hover .tooltip {
+    display: none;
+  }
   .tab-menu {
     display: none;
   }

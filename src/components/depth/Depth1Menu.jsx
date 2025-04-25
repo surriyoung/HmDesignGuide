@@ -4,7 +4,7 @@ const Depth1Menu = ({ onMenuClick }) => (
   <ul className="depth1">
     <li>
       <span className="menu icon-menu">
-        <Link to="/HmDesignGuide">
+        <Link to="/">
           <svg
             width="24"
             height="24"

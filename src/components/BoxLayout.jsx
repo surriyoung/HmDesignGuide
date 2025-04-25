@@ -1,9 +1,10 @@
 import React from "react";
+import ContentTitle from "./ContentTitle";
 
 const BoxLayout = ({ title, children }) => {
   return (
     <section className="box">
-      {title && <h3 className="box-title">{title}</h3>}
+      {title && <ContentTitle title={title} name={"box-title"} />}
       <div className="box-content">{children}</div>
     </section>
   );

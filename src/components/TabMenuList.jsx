@@ -43,7 +43,7 @@ function TabMenuList() {
     if (location.pathname === path) {
       // 현재 닫은 탭이 현재 활성화된 탭이라면, 가장 마지막 탭으로 이동
       const lastTab = filtered[filtered.length - 1] || {
-        path: "//",
+        path: "/",
       };
       navigate(lastTab.path);
     }
