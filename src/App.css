@@ -240,6 +240,121 @@ html[data-theme="dark"] {
   transform: translateX(44px);
   background: var(--color-primary) url(./assets/icons/dark.svg) center no-repeat;
 }
+/* 체크박스 디자인 */
+.custom-check-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 15px 5px 10px;
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  color: var(--text2);
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.custom-check-button svg path {
+  fill: var(--text2);
+}
+.custom-check-button.checked {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.custom-check-button.checked svg path {
+  fill: var(--color-primary);
+}
+/* 폼 */
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 40px;
+  row-gap: 25px;
+}
+.form-list:not(.check, .toggle) {
+  width: calc(100% / 4 - 120px / 4);
+}
+.form-list.check,
+.form-list.toggle {
+  width: 100%;
+}
+.form-list.check {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+/* 인풋&샐렉트 */
+.input-style {
+  width: 100%;
+  padding: 7px 30px 7px 10px;
+  border-radius: 5px;
+  border: 1px solid var(--line);
+  background-color: var(--bg2);
+  outline: none;
+  color: var(--text1);
+  font-size: 16px;
+}
+.input-style::placeholder {
+  color: var(--text4);
+}
+.input-style {
+  background-image: url(./assets/icons/input-icon.svg);
+  background-position: calc(100% - 5px) center;
+  background-repeat: no-repeat;
+}
+.select-style {
+  appearance: none;
+  background-image: url(./assets/icons/select-icon.svg);
+  background-position: calc(100% - 5px) center;
+  background-repeat: no-repeat;
+}
+/* 라디오버튼 */
+.radio-wrap {
+  height: 33px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.radio-style input[type="radio"] {
+  appearance: none; /* 기본 스타일을 제거 */
+  -webkit-appearance: none; /* Safari에서 기본 스타일 제거 */
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background-color: white;
+  position: relative;
+  cursor: pointer;
+  transition: border 0.2s, background-color 0.2s;
+}
+.radio-style input[type="radio"]:checked {
+  border: 5px solid var(--color-primary); /* 선택된 라디오 버튼의 보더 스타일 */
+  background-color: var(--color-primary); /* 선택된 라디오 버튼의 배경 색 */
+}
+.radio-style label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+.radio-style input[type="radio"]:checked::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background-color: white; /* 선택된 라디오 버튼 내부의 원 */
+  border-radius: 50%;
+}
+html[data-theme="dark"] .input-style {
+  background-image: url(./assets/icons/input-icon-dark.svg);
+}
+html[data-theme="dark"] .select-style {
+  background-image: url(./assets/icons/select-icon-dark.svg);
+}
 svg path {
   fill: var(--text2);
 }

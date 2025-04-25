@@ -3,19 +3,69 @@ import FormLayout from "../../components/FormLayout";
 
 const FormGuide = () => {
   const parkingTypeOptions = [
-    { value: "underground", label: "지하" },
-    { value: "ground", label: "지상" },
-    { value: "mechanical", label: "기계식" },
+    { value: "Select1", label: "Select1" },
+    { value: "Select2", label: "Select2" },
+    { value: "Select3", label: "Select3" },
+  ];
+
+  const genderOptions = [
+    { value: "all", label: "전체" },
+    { value: "in", label: "입차" },
+    { value: "out", label: "출차" },
+  ];
+
+  // 체크박스 리스트 객체 배열 (다중 체크 가능/불가능 추가)
+  const checkOptions = [
+    { value: "option1", label: "옵션 1" },
+    { value: "option2", label: "옵션 2" },
+    { value: "option3", label: "옵션 3" },
+    { value: "option4", label: "옵션 4" },
+    { value: "option5", label: "옵션 5" },
+    { value: "option6", label: "옵션 6" },
+    { value: "option7", label: "옵션 7" },
+    { value: "option8", label: "옵션 8" },
+    { value: "option9", label: "옵션 9" },
+    { value: "option10", label: "옵션 10" },
+    { value: "option11", label: "옵션 11" },
+    { value: "option12", label: "옵션 12" },
+    { value: "option13", label: "옵션 13" },
+    { value: "option14", label: "옵션 14" },
+    { value: "option15", label: "옵션 15" },
+    { value: "option16", label: "옵션 16" },
+    { value: "option17", label: "옵션 17" },
+    { value: "option18", label: "옵션 18" },
+    { value: "option19", label: "옵션 19" },
+    { value: "option20", label: "옵션 20" },
   ];
 
   return (
     <BoxLayout title="폼 가이드">
-      <FormLayout title="주차장 코드" type="input" />
-      <FormLayout
-        title="주차장 유형"
-        type="select"
-        options={parkingTypeOptions}
-      />
+      <form className="form">
+        <FormLayout title="Input Box" type="input" />
+        <FormLayout
+          title="Select Box"
+          type="select"
+          options={parkingTypeOptions}
+        />
+        <FormLayout title="RadioButton" type="radio" options={genderOptions} />
+        <FormLayout title="야간 개방 여부" type="toggle" />
+        <BoxLayout title="다중선택 체크박스">
+          <FormLayout
+            title="다중선택"
+            type="check"
+            options={checkOptions}
+            multiple={true}
+          />
+        </BoxLayout>
+        <BoxLayout title="단일선택 체크박스">
+          <FormLayout
+            title="단일선택"
+            type="check"
+            options={checkOptions}
+            multiple={false}
+          />
+        </BoxLayout>
+      </form>
     </BoxLayout>
   );
 };
