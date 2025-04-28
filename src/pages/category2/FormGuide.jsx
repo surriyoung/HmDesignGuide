@@ -2,8 +2,9 @@ import BoxLayout from "../../components/BoxLayout";
 import Button from "../../components/Button";
 import FormLayout from "../../components/FormLayout";
 import ContentTitle from "../../components/ContentTitle";
+import { FormProvider, useFormContext } from "../../context/FormContext"; // ✨ 추가
 
-const FormGuide = () => {
+const FormGuideContent = () => {
   const parkingTypeOptions = [
     { value: "Select1", label: "Select1" },
     { value: "Select2", label: "Select2" },
@@ -39,11 +40,20 @@ const FormGuide = () => {
     { value: "option20", label: "옵션 20" },
   ];
 
-  // 저장 버튼 클릭 핸들러
+  const {
+    multiChecked,
+    setMultiChecked,
+    resetMultiChecked,
+    singleChecked,
+    setSingleChecked,
+    resetSingleChecked,
+  } = useFormContext(); // ✨ 추가
+
   const handleSave = (e) => {
-    e.preventDefault(); // 기본 동작 막기
+    e.preventDefault();
     console.log("폼이 제출되었습니다!");
   };
+
   return (
     <>
       <ContentTitle title={"Form Guide"}>
@@ -67,25 +77,46 @@ const FormGuide = () => {
           <FormLayout title="내용" type="textarea" />
           <FormLayout title="파일 업로드" type="file" />
           <FormLayout title="토글" type="toggle" />
-          <BoxLayout title="다중선택 체크박스" toggle="true">
+          <BoxLayout
+            title="다중선택 체크박스"
+            toggle={true}
+            onReset={resetMultiChecked}
+          >
             <FormLayout
               title="다중선택"
               type="check"
               options={checkOptions}
               multiple={true}
+              checked={multiChecked}
+              setChecked={setMultiChecked}
             />
           </BoxLayout>
-          <BoxLayout title="단일선택 체크박스" toggle="true">
+          <BoxLayout
+            title="단일선택 체크박스"
+            toggle={true}
+            onReset={resetSingleChecked}
+          >
             <FormLayout
               title="단일선택"
               type="check"
               options={checkOptions}
               multiple={false}
+              checked={singleChecked}
+              setChecked={setSingleChecked}
             />
           </BoxLayout>
         </form>
       </BoxLayout>
     </>
+  );
+};
+
+// FormProvider로 감싸서 제공
+const FormGuide = () => {
+  return (
+    <FormProvider>
+      <FormGuideContent />
+    </FormProvider>
   );
 };
 

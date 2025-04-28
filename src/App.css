@@ -992,6 +992,9 @@ header {
 .anniversary li.upcoming .dot {
   background-color: var(--text2);
 }
+.anniversary li.next .dot {
+  background-color: var(--color-primary);
+}
 /* 메뉴검색 */
 .result-wrap {
   width: 100%;

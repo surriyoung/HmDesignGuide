@@ -6,8 +6,14 @@ import ToggleSwitch from "./ToggleSwitch";
 import CustomCheckButton from "./form/CustomCheckButton";
 import Button from "./Button";
 
-const FormLayout = ({ title, type, options, multiple }) => {
-  const [checked, setChecked] = useState(new Set()); // Set을 사용하여 중복 체크 방지
+const FormLayout = ({
+  title,
+  type,
+  options,
+  multiple,
+  checked,
+  setChecked,
+}) => {
   const [toggleChecked, setToggleChecked] = useState(false); // ✅ toggle 상태
   const [uploadedFiles, setUploadedFiles] = useState([]); // ✅ 파일 업로드 상태
 
@@ -21,6 +27,7 @@ const FormLayout = ({ title, type, options, multiple }) => {
 
   // 체크박스 상태 변경
   const handleCheck = (value) => {
+    if (!setChecked) return; // 체크박스 아닌 경우 패스
     if (multiple) {
       const newChecked = new Set(checked);
       if (newChecked.has(value)) {

@@ -4,6 +4,7 @@ import axios from "axios";
 const Anniversary = () => {
   const [holidays, setHolidays] = useState([]);
   const [todayHoliday, setTodayHoliday] = useState(null);
+  const [nextHoliday, setNextHoliday] = useState(null); // 가장 근접한 기념일을 위한 state 추가
 
   useEffect(() => {
     const fetchAll = async () => {
@@ -60,6 +61,14 @@ const Anniversary = () => {
           (item) => item.locdate === todayNum
         );
         setTodayHoliday(todayHoliday);
+
+        // upcoming 기념일 중 가장 근접한 기념일 찾기
+        const upcomingHolidays = allHolidays.filter(
+          (item) => item.locdate >= todayNum
+        );
+        if (upcomingHolidays.length > 0) {
+          setNextHoliday(upcomingHolidays[0]);
+        }
       } catch (error) {
         console.error("데이터를 불러오는 데 실패했습니다.", error.message);
       }
@@ -73,14 +82,15 @@ const Anniversary = () => {
       {holidays.map((item, index) => (
         <li
           key={index}
-          className={
-            // 오늘 기념일이 있으면 오늘 기념일을 포함한 모든 미래 기념일에 'upcoming' 클래스를 추가
+          className={`${
             (todayHoliday && item.locdate >= todayHoliday.locdate) ||
             item.locdate >
               new Date().toISOString().slice(0, 10).replace(/-/g, "")
               ? "upcoming"
               : ""
-          }
+          } ${
+            nextHoliday && item.locdate === nextHoliday.locdate ? "next" : ""
+          }`}
         >
           <span className="dot"></span>
           <time>
