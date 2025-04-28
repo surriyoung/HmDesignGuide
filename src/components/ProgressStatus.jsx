@@ -77,9 +77,11 @@ const ProgressStatus = () => {
       <div className="recent-searches result-wrap">
         <ul>
           {commits.map((commit, index) => (
-            <li key={index}>
-              <p>{commit.commit.message}</p>
-              <p>{formatDate(commit.commit.author.date)}</p>{" "}
+            <li key={index} className="progress-list">
+              <p className="message">{commit.commit.message}</p>
+              <p className="date">
+                {formatDate(commit.commit.author.date)}
+              </p>{" "}
               {/* 날짜 포맷 변경 */}
             </li>
           ))}

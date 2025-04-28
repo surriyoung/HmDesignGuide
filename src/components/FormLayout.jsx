@@ -34,12 +34,6 @@ const FormLayout = ({ title, type, options, multiple }) => {
     }
   };
 
-  // 선택해제 버튼 클릭 핸들러
-  const handleClearSelection = () => {
-    setChecked(new Set()); // 체크된 항목 초기화
-    console.log("선택이 해제되었습니다!");
-  };
-
   const handleFileChange = (e) => {
     const files = Array.from(e.target.files);
     const newFiles = [...uploadedFiles, ...files];
@@ -104,8 +98,6 @@ const FormLayout = ({ title, type, options, multiple }) => {
               onChange={() => handleCheck(option.value)}
             />
           ))}
-          {/* 선택해제 버튼 추가 */}
-          <Button name="선택해제" onClick={handleClearSelection} />
         </>
       ) : type === "textarea" ? (
         <textarea

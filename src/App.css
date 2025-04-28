@@ -6,32 +6,22 @@
   flex-direction: column;
   color: var(--text1);
 }
-.main-wrapper main .main-wrap::-webkit-scrollbar,
-.main-wrapper aside .depth2.show .depth2-list::-webkit-scrollbar,
-.textarea-style::-webkit-scrollbar {
+*::-webkit-scrollbar {
   display: block;
   width: 12px;
   height: 12px;
 }
-.main-wrapper main .main-wrap::-webkit-scrollbar-corner,
-.main-wrapper main .main-wrap::-webkit-scrollbar-track,
-.main-wrapper aside .depth2.show .depth2-list::-webkit-scrollbar-corner,
-.main-wrapper aside .depth2.show .depth2-list::-webkit-scrollbar-track,
-.textarea-style::-webkit-scrollbar-corner,
-.textarea-style::-webkit-scrollbar-track {
+*::-webkit-scrollbar-corner,
+*::-webkit-scrollbar-track {
   background: transparent;
 }
-.main-wrapper main .main-wrap::-webkit-scrollbar-thumb,
-.main-wrapper aside .depth2.show .depth2-list::-webkit-scrollbar-thumb,
-.textarea-style::-webkit-scrollbar-thumb {
-  background: var(--secondary-btn-bg);
+*::-webkit-scrollbar-thumb {
+  background-color: var(--secondary-hover-btn-bg);
   border-radius: 10px;
   border: 2px solid var(--bg2);
 }
-.main-wrapper main .main-wrap::-webkit-scrollbar-thumb:hover,
-.main-wrapper aside .depth2.show .depth2-list::-webkit-scrollbar-thumb:hover,
-.textarea-style::-webkit-scrollbar-thumb:hover {
-  background-color: var(--secondary-hover-btn-bg);
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-btn-bg);
 }
 /* 색상 */
 :root {
@@ -756,7 +746,6 @@ header {
 }
 .box .box-title {
   background-color: var(--th);
-  border-bottom: 1px dashed var(--line);
   height: 45px;
   font-size: 18px;
   font-weight: 700;
@@ -766,10 +755,27 @@ header {
   padding: 5px 16px;
 }
 .box .box-content {
+  border-top: 1px dashed var(--line);
   padding: 15px;
 }
 .box .box-content .box-content-title:not(:first-child) {
   margin-top: 20px;
+}
+.toggle-box .icon-btn svg {
+  transform: rotate(180deg);
+}
+.toggle-box.closed .icon-btn svg {
+  transform: rotate(0);
+}
+.toggle-box .box-content {
+  transition: all 0.3s;
+}
+.toggle-box.closed .box-content {
+  padding: 0 15px;
+  border-top: 0;
+}
+.toggle-box.closed .box-content .form-list {
+  display: none;
 }
 /* 테이블 공통 */
 .table-container {
@@ -854,7 +860,6 @@ header {
   display: flex;
   width: calc(100% / 4);
   min-width: 390px;
-  height: 510px;
   flex-direction: column;
   row-gap: 20px;
 }
@@ -868,7 +873,7 @@ header {
   padding: 30px;
   border-radius: 30px;
   border: 1px solid var(--line);
-  height: 100%;
+  height: 510px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1065,6 +1070,24 @@ header {
   padding-bottom: 25px;
   height: 100%;
 }
+/* 진행상황 */
+.progress-tile > p {
+  height: 20px;
+  flex-shrink: 0;
+}
+.progress-tile > .result-wrap {
+  height: calc(100% - 20px);
+  overflow-y: auto;
+}
+.progress-list {
+  margin-bottom: 20px;
+}
+.progress-list .date {
+  text-align: right;
+  font-size: 14px;
+  color: var(--text4);
+}
+
 @media screen and (max-width: 1024px) {
   .icon-menu:hover .tooltip {
     display: none;

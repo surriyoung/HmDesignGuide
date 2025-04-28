@@ -1,9 +1,7 @@
 import BoxLayout from "../../components/BoxLayout";
 import Button from "../../components/Button";
 import FormLayout from "../../components/FormLayout";
-import ArrowIcon from "../../assets/icons/ArrowIcon";
 import ContentTitle from "../../components/ContentTitle";
-import { useState } from "react";
 
 const FormGuide = () => {
   const parkingTypeOptions = [
@@ -70,12 +68,6 @@ const FormGuide = () => {
           <FormLayout title="파일 업로드" type="file" />
           <FormLayout title="토글" type="toggle" />
           <BoxLayout title="다중선택 체크박스" toggle="true">
-            <div className="btn-list">
-              <Button name="선택해제" />
-              <Button name="토글">
-                <ArrowIcon />
-              </Button>
-            </div>
             <FormLayout
               title="다중선택"
               type="check"
@@ -84,12 +76,6 @@ const FormGuide = () => {
             />
           </BoxLayout>
           <BoxLayout title="단일선택 체크박스" toggle="true">
-            <div className="btn-list">
-              <Button name="선택해제" />
-              <Button name="토글">
-                <ArrowIcon />
-              </Button>
-            </div>
             <FormLayout
               title="단일선택"
               type="check"
