@@ -33,19 +33,21 @@ const TableGuide = () => {
   ];
 
   return (
-    <>
-      <ContentTitle title="세로형 테이블" />
-      <TableContainer>
-        <ColumnItem headers={headers} items={parkingData} />
-      </TableContainer>
+    <div className="main-wrap">
+      <div className="main-content">
+        <ContentTitle title="세로형 테이블" />
+        <TableContainer>
+          <ColumnItem headers={headers} items={parkingData} />
+        </TableContainer>
 
-      <ContentTitle title="가로형 테이블" />
-      <TableContainer>
-        {infoList.map((item, index) => (
-          <RowItem key={index} label={item.label} value={item.value} />
-        ))}
-      </TableContainer>
-    </>
+        <ContentTitle title="가로형 테이블" />
+        <TableContainer>
+          {infoList.map((item, index) => (
+            <RowItem key={index} label={item.label} value={item.value} />
+          ))}
+        </TableContainer>
+      </div>
+    </div>
   );
 };
 

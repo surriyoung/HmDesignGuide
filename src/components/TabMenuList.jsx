@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
+import CloseIcon from "../assets/icons/CloseIcon";
+import StarIcon from "../assets/icons/StarIcon";
 
 const routeMap = {
   "/": "홈",
@@ -16,6 +18,10 @@ function TabMenuList() {
   const [tabs, setTabs] = useState(() => {
     const saved = localStorage.getItem("openTabs");
     return saved ? JSON.parse(saved) : [{ path: "/", label: "홈" }];
+  });
+  const [favoriteTabs, setFavoriteTabs] = useState(() => {
+    const savedFavorites = localStorage.getItem("favoriteTabs");
+    return savedFavorites ? JSON.parse(savedFavorites) : [];
   });
 
   // 라우트 변경 시 탭 추가
@@ -41,12 +47,24 @@ function TabMenuList() {
     localStorage.setItem("openTabs", JSON.stringify(filtered));
 
     if (location.pathname === path) {
-      // 현재 닫은 탭이 현재 활성화된 탭이라면, 가장 마지막 탭으로 이동
-      const lastTab = filtered[filtered.length - 1] || {
-        path: "/",
-      };
+      const lastTab = filtered[filtered.length - 1] || { path: "/" };
       navigate(lastTab.path);
     }
+  };
+
+  const handleToggleFavorite = (e, path) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setFavoriteTabs((prev) => {
+      let updated;
+      if (prev.includes(path)) {
+        updated = prev.filter((favPath) => favPath !== path);
+      } else {
+        updated = [...prev, path];
+      }
+      localStorage.setItem("favoriteTabs", JSON.stringify(updated));
+      return updated;
+    });
   };
 
   return (
@@ -54,24 +72,26 @@ function TabMenuList() {
       {tabs.map(({ path, label }) => (
         <li key={path} className={location.pathname === path ? "open" : ""}>
           <Link to={path}>
-            {label}
+            <div>
+              {path !== "/" && (
+                <button
+                  onClick={(e) => handleToggleFavorite(e, path)}
+                  className={`favorite-btn ${
+                    favoriteTabs.includes(path) ? "favorite" : ""
+                  }`}
+                >
+                  <StarIcon />
+                </button>
+              )}
+              {label}
+            </div>
+            {/* 닫기 버튼 */}
             {path !== "/" && (
               <button
                 onClick={(e) => handleCloseTab(e, path)}
                 className="close-btn"
               >
-                <svg
-                  width="20"
-                  height="21"
-                  viewBox="0 0 20 21"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M5.33317 16.3307L4.1665 15.1641L8.83317 10.4974L4.1665 5.83073L5.33317 4.66406L9.99984 9.33073L14.6665 4.66406L15.8332 5.83073L11.1665 10.4974L15.8332 15.1641L14.6665 16.3307L9.99984 11.6641L5.33317 16.3307Z"
-                    fill="#999899"
-                  />
-                </svg>
+                <CloseIcon />
               </button>
             )}
           </Link>

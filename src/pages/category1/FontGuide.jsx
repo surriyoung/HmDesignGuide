@@ -20,34 +20,36 @@ const FontGuide = () => {
   ];
 
   return (
-    <>
-      <ContentTitle title={"Font Family"} />
-      <p>Pretendard</p>
-      <ContentTitle title={"Font Size"} />
-      <TableContainer>
-        {fontSize.map((item, idx) => (
-          <RowItem
-            key={idx}
-            label={item.label}
-            value={item.value}
-            type="size"
-            showExample
-          />
-        ))}
-      </TableContainer>
-      <ContentTitle title={"Font Weight"} />
-      <TableContainer>
-        {fontWeight.map((item, idx) => (
-          <RowItem
-            key={idx}
-            label={item.label}
-            value={item.value}
-            type="weight"
-            showExample
-          />
-        ))}
-      </TableContainer>
-    </>
+    <div className="main-wrap">
+      <div className="main-content">
+        <ContentTitle title={"Font Family"} />
+        <p>Pretendard</p>
+        <ContentTitle title={"Font Size"} />
+        <TableContainer>
+          {fontSize.map((item, idx) => (
+            <RowItem
+              key={idx}
+              label={item.label}
+              value={item.value}
+              type="size"
+              showExample
+            />
+          ))}
+        </TableContainer>
+        <ContentTitle title={"Font Weight"} />
+        <TableContainer>
+          {fontWeight.map((item, idx) => (
+            <RowItem
+              key={idx}
+              label={item.label}
+              value={item.value}
+              type="weight"
+              showExample
+            />
+          ))}
+        </TableContainer>
+      </div>
+    </div>
   );
 };
 

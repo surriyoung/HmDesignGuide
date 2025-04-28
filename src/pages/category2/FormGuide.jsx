@@ -114,9 +114,13 @@ const FormGuideContent = () => {
 // FormProvider로 감싸서 제공
 const FormGuide = () => {
   return (
-    <FormProvider>
-      <FormGuideContent />
-    </FormProvider>
+    <div className="main-wrap">
+      <div className="main-content">
+        <FormProvider>
+          <FormGuideContent />
+        </FormProvider>
+      </div>
+    </div>
   );
 };
 

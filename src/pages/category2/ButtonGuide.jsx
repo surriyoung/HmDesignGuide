@@ -19,38 +19,40 @@ const ButtonGuide = () => {
   };
 
   return (
-    <>
-      <ContentTitle title="UI 컴포넌트" />
-      <BoxLayout title="버튼">
-        <PaletteSection>
-          <Button name="Primary" type="primary" />
-          <Button name="Secondary" />
-          <Button name="Danger" type="danger" />
-        </PaletteSection>
-      </BoxLayout>
-      <BoxLayout title="상태 표시">
-        <PaletteSection>
-          <StateTag state="거절" type="dont" />
-          <StateTag state="승인" type="doing" />
-          <StateTag state="신청" type="done" />
-        </PaletteSection>
-      </BoxLayout>
-      <BoxLayout title="토글 버튼">
-        <PaletteSection>
-          <ToggleSwitch
-            label="기본토글"
-            checked={isToggled}
-            onChange={handleToggleChange}
-          />
-          <ToggleSwitch
-            label="모드토글"
-            checked={isModeToggled}
-            onChange={handleModeToggleChange}
-            isModeToggle={true} // 모드토글이므로 isModeToggle을 true로 설정
-          />
-        </PaletteSection>
-      </BoxLayout>
-    </>
+    <div className="main-wrap">
+      <div className="main-content">
+        <ContentTitle title="UI 컴포넌트" />
+        <BoxLayout title="버튼">
+          <PaletteSection>
+            <Button name="Primary" type="primary" />
+            <Button name="Secondary" />
+            <Button name="Danger" type="danger" />
+          </PaletteSection>
+        </BoxLayout>
+        <BoxLayout title="상태 표시">
+          <PaletteSection>
+            <StateTag state="거절" type="dont" />
+            <StateTag state="승인" type="doing" />
+            <StateTag state="신청" type="done" />
+          </PaletteSection>
+        </BoxLayout>
+        <BoxLayout title="토글 버튼">
+          <PaletteSection>
+            <ToggleSwitch
+              label="기본토글"
+              checked={isToggled}
+              onChange={handleToggleChange}
+            />
+            <ToggleSwitch
+              label="모드토글"
+              checked={isModeToggled}
+              onChange={handleModeToggleChange}
+              isModeToggle={true} // 모드토글이므로 isModeToggle을 true로 설정
+            />
+          </PaletteSection>
+        </BoxLayout>
+      </div>
+    </div>
   );
 };
 

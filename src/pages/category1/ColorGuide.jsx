@@ -79,32 +79,34 @@ const ColorGuide = ({ theme }) => {
   }, [theme]);
 
   return (
-    <div>
-      <ContentTitle title={"색상 가이드"} />
+    <div className="main-wrap">
+      <div className="main-content">
+        <ContentTitle title={"색상 가이드"} />
 
-      <BoxLayout title="Static Colors">
-        <PaletteSection colors={colorValues.static} colorPalette />
-      </BoxLayout>
+        <BoxLayout title="Static Colors">
+          <PaletteSection colors={colorValues.static} colorPalette />
+        </BoxLayout>
 
-      <BoxLayout title="Theme Colors">
-        <div>
-          <PaletteSection
-            title="Depth Colors"
-            colors={colorValues.themed.depth}
-            colorPalette
-          />
-          <PaletteSection
-            title="Text Colors"
-            colors={colorValues.themed.text}
-            colorPalette
-          />
-          <PaletteSection
-            title="Contents Colors"
-            colors={colorValues.themed.contents}
-            colorPalette
-          />
-        </div>
-      </BoxLayout>
+        <BoxLayout title="Theme Colors">
+          <div>
+            <PaletteSection
+              title="Depth Colors"
+              colors={colorValues.themed.depth}
+              colorPalette
+            />
+            <PaletteSection
+              title="Text Colors"
+              colors={colorValues.themed.text}
+              colorPalette
+            />
+            <PaletteSection
+              title="Contents Colors"
+              colors={colorValues.themed.contents}
+              colorPalette
+            />
+          </div>
+        </BoxLayout>
+      </div>
     </div>
   );
 };

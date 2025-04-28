@@ -41,19 +41,15 @@ const App = () => {
           <Navbar />
           <main>
             <TabMenuList />
-            <div className="main-wrap">
-              <div className="main-content">
-                <Routes>
-                  {/* <Route path="/" element={<HmDesignGuide user={user} />} /> */}
-                  <Route path="/" element={<Home user={user} />} />
-                  <Route path="/color" element={<ColorGuide />} />
-                  <Route path="/font-size" element={<FontGuide />} />
-                  <Route path="/table" element={<TableGuide />} />
-                  <Route path="/button" element={<ButtonGuide />} />
-                  <Route path="/form" element={<FormGuide />} />
-                </Routes>
-              </div>
-            </div>
+            <Routes>
+              {/* <Route path="/" element={<HmDesignGuide user={user} />} /> */}
+              <Route path="/" element={<Home user={user} />} />
+              <Route path="/color" element={<ColorGuide />} />
+              <Route path="/font-size" element={<FontGuide />} />
+              <Route path="/table" element={<TableGuide />} />
+              <Route path="/button" element={<ButtonGuide />} />
+              <Route path="/form" element={<FormGuide />} />
+            </Routes>
           </main>
         </div>
       </Router>
