@@ -23,9 +23,9 @@ const ButtonGuide = () => {
       <ContentTitle title="UI 컴포넌트" />
       <BoxLayout title="버튼">
         <PaletteSection>
-          <Button name="Primary" type="primary-btn" />
+          <Button name="Primary" type="primary" />
           <Button name="Secondary" />
-          <Button name="Danger" type="danger-btn" />
+          <Button name="Danger" type="danger" />
         </PaletteSection>
       </BoxLayout>
       <BoxLayout title="상태 표시">

@@ -71,9 +71,10 @@ const ProgressStatus = () => {
 
   return (
     <div className="main-tile progress-tile">
-      <h3>진행 상황</h3>
+      <p>
+        오늘 <strong>{commits.length}</strong>번 업데이트 했습니다.
+      </p>
       <div className="recent-searches result-wrap">
-        <p>업데이트 횟수: {commits.length}</p>
         <ul>
           {commits.map((commit, index) => (
             <li key={index}>
