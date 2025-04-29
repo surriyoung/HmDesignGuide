@@ -21,7 +21,7 @@ const BoxLayout = ({ title, toggle = false, children, onReset }) => {
           {toggle && (
             <div className="btn-list">
               <Button name="선택해제" onClick={onReset} />
-              <Button name="토글" onClick={toggleOpen}>
+              <Button type="icon" onClick={toggleOpen}>
                 <ArrowIcon />
               </Button>
             </div>

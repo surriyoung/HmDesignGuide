@@ -5,6 +5,7 @@ import StarIcon from "../assets/icons/StarIcon";
 
 const routeMap = {
   "/": "홈",
+  "/dash": "대시보드",
   "/color": "색상",
   "/font-size": "폰트",
   "/table": "테이블",
@@ -19,12 +20,9 @@ function TabMenuList() {
     const saved = localStorage.getItem("openTabs");
     return saved ? JSON.parse(saved) : [{ path: "/", label: "홈" }];
   });
-  const [favoriteTabs, setFavoriteTabs] = useState(() => {
-    const savedFavorites = localStorage.getItem("favoriteTabs");
-    return savedFavorites ? JSON.parse(savedFavorites) : [];
-  });
 
-  // 라우트 변경 시 탭 추가
+  const [draggingIndex, setDraggingIndex] = useState(null);
+
   useEffect(() => {
     const currentPath = location.pathname;
     const label = routeMap[currentPath];
@@ -52,40 +50,56 @@ function TabMenuList() {
     }
   };
 
-  const handleToggleFavorite = (e, path) => {
-    e.stopPropagation();
+  // 드래그 시작
+  const handleDragStart = (index) => {
+    if (tabs[index].path === "/") return; // 홈은 드래그 금지
+    setDraggingIndex(index);
+  };
+
+  // 드래그 중
+  const handleDragOver = (e, index) => {
     e.preventDefault();
-    setFavoriteTabs((prev) => {
-      let updated;
-      if (prev.includes(path)) {
-        updated = prev.filter((favPath) => favPath !== path);
-      } else {
-        updated = [...prev, path];
-      }
-      localStorage.setItem("favoriteTabs", JSON.stringify(updated));
-      return updated;
-    });
+    if (draggingIndex === null || draggingIndex === index) return;
+    if (tabs[index].path === "/") return; // 홈 위로 드래그 금지
+
+    const updatedTabs = [...tabs];
+    const draggedTab = updatedTabs[draggingIndex];
+
+    updatedTabs.splice(draggingIndex, 1);
+    updatedTabs.splice(index, 0, draggedTab);
+
+    setDraggingIndex(index);
+    setTabs(updatedTabs);
+    localStorage.setItem("openTabs", JSON.stringify(updatedTabs));
+  };
+
+  // 드래그 종료
+  const handleDragEnd = () => {
+    setDraggingIndex(null);
   };
 
   return (
     <ul className="tab-menu">
-      {tabs.map(({ path, label }) => (
-        <li key={path} className={location.pathname === path ? "open" : ""}>
+      {tabs.map(({ path, label }, index) => (
+        <li
+          key={path}
+          className={`${location.pathname === path ? "open" : ""} ${
+            draggingIndex === index ? "dragging" : ""
+          }`}
+          draggable={path !== "/"}
+          onDragStart={() => handleDragStart(index)}
+          onDragOver={(e) => handleDragOver(e, index)}
+          onDragEnd={handleDragEnd}
+        >
           <Link to={path}>
             <div>
               {path !== "/" && (
-                <button
-                  onClick={(e) => handleToggleFavorite(e, path)}
-                  className={`favorite-btn ${
-                    favoriteTabs.includes(path) ? "favorite" : ""
-                  }`}
-                >
+                <button onClick={""} className={`favorite-btn`}>
                   <StarIcon />
                 </button>
               )}
               {label}
             </div>
-            {/* 닫기 버튼 */}
             {path !== "/" && (
               <button
                 onClick={(e) => handleCloseTab(e, path)}

@@ -12,6 +12,7 @@ import FormGuide from "./pages/category2/FormGuide";
 import Header from "./components/Header";
 import ProfileImg from "./assets/profile.jpg";
 import TabMenuList from "./components/TabMenuList";
+import DashBoard from "./pages/DashBoard";
 
 const App = () => {
   const [theme, setTheme] = useState("light");
@@ -44,6 +45,7 @@ const App = () => {
             <Routes>
               {/* <Route path="/" element={<HmDesignGuide user={user} />} /> */}
               <Route path="/" element={<Home user={user} />} />
+              <Route path="/dash" element={<DashBoard />} />
               <Route path="/color" element={<ColorGuide />} />
               <Route path="/font-size" element={<FontGuide />} />
               <Route path="/table" element={<TableGuide />} />

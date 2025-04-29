@@ -5,6 +5,10 @@ import PaletteSection from "../../components/PaletteSection";
 import ToggleSwitch from "../../components/ToggleSwitch";
 import Button from "../../components/Button";
 import StateTag from "../../components/StateTag";
+import ArrowIcon from "../../assets/icons/ArrowIcon";
+import ExcelIcon from "../../assets/icons/ExcelIcon";
+import InstallBtn from "../../assets/icons/InstallBtn";
+import SearchBox from "../../components/SearchBox";
 
 const ButtonGuide = () => {
   const [isToggled, setIsToggled] = useState(false);
@@ -27,7 +31,19 @@ const ButtonGuide = () => {
             <Button name="Primary" type="primary" />
             <Button name="Secondary" />
             <Button name="Danger" type="danger" />
+            <Button name="엑셀저장" type="excel">
+              <ExcelIcon />
+            </Button>
+            <Button type="icon">
+              <InstallBtn />
+            </Button>
+            <Button type="icon">
+              <ArrowIcon />
+            </Button>
           </PaletteSection>
+        </BoxLayout>
+        <BoxLayout title="검색창">
+          <SearchBox />
         </BoxLayout>
         <BoxLayout title="상태 표시">
           <PaletteSection>

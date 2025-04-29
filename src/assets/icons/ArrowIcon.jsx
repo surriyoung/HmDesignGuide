@@ -1,29 +1,17 @@
 const ArrowIcon = () => (
   <svg
-    width="19"
-    height="10"
-    viewBox="0 0 19 10"
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <g clip-path="url(#clip0_179_1054)">
-      <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M8.98166 8.27102L4.85845 4.14781L5.88907 3.11719L9.49698 6.72509L13.1049 3.11719L14.1355 4.14781L10.0123 8.27102C9.8756 8.40766 9.69025 8.48442 9.49698 8.48442C9.30371 8.48442 9.11835 8.40766 8.98166 8.27102Z"
-        fill="white"
-      />
-    </g>
-    <defs>
-      <clipPath id="clip0_179_1054">
-        <rect
-          width="8.74643"
-          height="17.4929"
-          fill="white"
-          transform="translate(18.2463 0.867188) rotate(90)"
-        />
-      </clipPath>
-    </defs>
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M7.77135 10.714L4.00002 6.94267L4.94268 6L8.24269 9.3L11.5427 6L12.4854 6.94267L8.71402 10.714C8.589 10.839 8.41946 10.9092 8.24269 10.9092C8.06591 10.9092 7.89637 10.839 7.77135 10.714Z"
+      fill="white"
+    />
   </svg>
 );
 

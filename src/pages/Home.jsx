@@ -5,6 +5,7 @@ import MenuSearchBox from "../components/mainTile/MenuSearchBox";
 import MainTileWrap from "../components/MainTileWrap";
 import ProgressStatus from "../components/ProgressStatus";
 import FavoriteList from "../components/mainTile/FavoriteList";
+import AmountCard from "../components/mainTile/AmountCard";
 
 const Home = ({ user }) => {
   const [favoriteTabs, setFavoriteTabs] = useState([]);
@@ -24,13 +25,13 @@ const Home = ({ user }) => {
           <h4>진행과정</h4>
           <div className="main-tile-wrapper mini-tile-wrapper">
             <MainTileWrap>
-              <ProgressStatus />
+              <AmountCard type="settle" />
             </MainTileWrap>
             <MainTileWrap>
-              <ProgressStatus />
+              <AmountCard type="due" />
             </MainTileWrap>
             <MainTileWrap>
-              <ProgressStatus />
+              <AmountCard type="collect" />
             </MainTileWrap>
           </div>
         </div>
@@ -47,6 +48,9 @@ const Home = ({ user }) => {
             </MainTileWrap>
             <MainTileWrap title="메뉴 검색">
               <MenuSearchBox />
+            </MainTileWrap>
+            <MainTileWrap title="진행상황">
+              <ProgressStatus />
             </MainTileWrap>
           </div>
         </div>

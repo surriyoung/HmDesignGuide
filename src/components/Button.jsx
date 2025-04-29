@@ -2,13 +2,12 @@ function Button({ type, name, children, onClick, disabled }) {
   return (
     <button
       type="button"
-      className={`basic-btn ${type ? `${type}-btn` : ""} ${
-        children ? "icon-btn" : ""
-      }`}
+      className={`basic-btn ${type ? `${type}-btn` : ""}`}
       onClick={onClick ? onClick : undefined}
       disabled={disabled ? disabled : undefined}
     >
-      {children ? children : name}
+      {children ? children : ""}
+      {name ? name : ""}
     </button>
   );
 }
