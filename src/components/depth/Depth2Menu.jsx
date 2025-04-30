@@ -1,6 +1,8 @@
 import SettingIcon from "../../assets/icons/SettingIcon";
 import GridIcon from "../../assets/icons/GridIcon";
 import Depth2MenuItem from "./Depth2MenuItem";
+import { Link } from "react-router-dom";
+import ParkingIcon from "../../assets/icons/ParkingIcon";
 
 const Depth2Menu = ({ isVisible, onClose, depth2Tit }) => {
   return (
@@ -39,6 +41,14 @@ const Depth2Menu = ({ isVisible, onClose, depth2Tit }) => {
             { to: "/table", label: "테이블" },
             { to: "/button", label: "컴포넌트" },
             { to: "/form", label: "폼" },
+          ]}
+        />
+        <Depth2MenuItem
+          icon={<ParkingIcon />}
+          title="주차관제"
+          items={[
+            { to: "/parking-status", label: "실시간 주차현황" },
+            { to: "/parking-log", label: "실시간 입출차현황" },
           ]}
         />
       </ul>

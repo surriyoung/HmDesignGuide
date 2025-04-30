@@ -13,6 +13,8 @@ import Header from "./components/Header";
 import ProfileImg from "./assets/profile.jpg";
 import TabMenuList from "./components/TabMenuList";
 import DashBoard from "./pages/DashBoard";
+import ParkingStatus from "./pages/category3/ParkingStatus";
+import ParkingLog from "./pages/category3/ParkingLog";
 
 const App = () => {
   const [theme, setTheme] = useState("light");
@@ -51,6 +53,8 @@ const App = () => {
               <Route path="/table" element={<TableGuide />} />
               <Route path="/button" element={<ButtonGuide />} />
               <Route path="/form" element={<FormGuide />} />
+              <Route path="/parking-status" element={<ParkingStatus />} />
+              <Route path="/parking-log" element={<ParkingLog />} />
             </Routes>
           </main>
         </div>

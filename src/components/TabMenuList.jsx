@@ -11,6 +11,8 @@ const routeMap = {
   "/table": "테이블",
   "/button": "컴포넌트",
   "/form": "폼",
+  "/parking-status": "주차현황",
+  "/parking-log": "입출차현황",
 };
 
 function TabMenuList() {
