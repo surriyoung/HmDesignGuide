@@ -49,9 +49,9 @@ const Home = ({ user }) => {
             <MainTileWrap title="메뉴 검색">
               <MenuSearchBox />
             </MainTileWrap>
-            <MainTileWrap title="진행상황">
+            {/* <MainTileWrap title="진행상황">
               <ProgressStatus />
-            </MainTileWrap>
+            </MainTileWrap> */}
           </div>
         </div>
       </div>

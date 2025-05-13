@@ -18,6 +18,8 @@ const MenuSearchBox = () => {
     { label: "테이블", path: "/table" },
     { label: "컴포넌트", path: "/button" },
     { label: "폼", path: "/form" },
+    { label: "주차현황", path: "/parking-status" },
+    { label: "입출차현황", path: "/parking-tracking" },
   ];
 
   // 검색어 변경 시 실행되는 함수

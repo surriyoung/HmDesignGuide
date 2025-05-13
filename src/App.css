@@ -245,6 +245,7 @@ html[data-theme="dark"] {
   display: inline-block;
   width: 44px;
   height: 24px;
+  flex-shrink: 0;
 }
 .toggle-switch .switch input {
   opacity: 0;
@@ -435,10 +436,10 @@ html[data-theme="dark"] {
   align-items: center;
   justify-content: space-between;
   column-gap: 10px;
-  margin-bottom: 10px;
+  margin-top: 10px;
 }
-.file-item:last-child {
-  margin-bottom: 0;
+.file-item:first-child {
+  margin-top: 0;
 }
 /* 검색창 */
 .search-box {
@@ -503,6 +504,7 @@ header {
   display: flex;
   align-items: center;
   column-gap: 15px;
+  justify-content: flex-end;
 }
 .profile-container .profile {
   width: 45px;
@@ -520,6 +522,9 @@ header {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.header > div {
+  width: 250px;
 }
 /* 레이아웃 */
 .main-wrapper {
@@ -767,6 +772,7 @@ header {
   width: calc(100% - 70px);
   min-width: calc(100% - 310px);
   height: 100%;
+  position: relative;
 }
 .main-wrap {
   width: 100%;
@@ -1001,7 +1007,9 @@ header {
 .main-tile-wrap .main-tile:not(.amount-tile) > *:last-child {
   position: relative;
 }
-.main-tile-wrap .main-tile:not(.amount-tile) > *:last-child::after {
+.main-tile-wrap
+  .main-tile:not(.amount-tile):not(.favorite-tile)
+  > *:last-child::after {
   width: 0;
   height: 1px;
   background-color: var(--text-emphasis);
@@ -1187,10 +1195,17 @@ header {
   border: 1px solid var(--line);
   border-radius: 20px;
   background: var(--bg2);
-  z-index: 99;
+  z-index: 9999;
 }
 .search-results ul {
   padding: 10px 0;
+}
+.search-results li {
+  cursor: pointer;
+  padding: 10px 0;
+}
+.search-results li:hover {
+  color: var(--text-emphasis);
 }
 .search-result-item {
   cursor: pointer;
@@ -1338,8 +1353,34 @@ header {
 .amount-tile:hover .more-btn svg path {
   fill: var(--primary-btn-text);
 }
+/* 즐겨찾기 */
+.favorite-list {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  column-gap: 25px;
+  justify-content: space-around;
+}
+.favorite-list > li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 15px;
+  padding: 5px;
+  cursor: pointer;
+}
+.favorite-list .icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--line2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /* 대시보드 */
-.dash-board-wrap {
+.dash-board-wrap .main-content {
+  min-width: 1000px;
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
@@ -1416,6 +1457,110 @@ header {
   color: var(--text-emphasis);
 }
 /* 주차관제 */
+.parking-content {
+  min-width: 1600px;
+}
+/* 주차관제 퀵메뉴 */
+.parking-quick-menu-wrap {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.parking-quick-menu-wrap .close-btn {
+  width: auto;
+  padding: 6px 18px;
+  border-radius: 5px 5px 0 0;
+  background-color: var(--bg);
+  column-gap: 5px;
+  height: auto;
+}
+.parking-quick-menu-wrap .close-btn.off {
+  border-radius: 5px;
+}
+.parking-quick-menu-wrap .close-btn.off svg {
+  transform: rotate(-180deg);
+}
+.parking-quick-menu-wrap .close-btn span {
+  font-size: 16px;
+  color: var(--text1);
+}
+.parking-quick-menu-wrap .close-btn svg path {
+  fill: var(--text1);
+}
+.parking-quick-menu {
+  display: flex;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+}
+.parking-quick-menu.off {
+  /* height: 0;
+  transition: all 0.3s; */
+}
+.parking-quick-menu.off > li {
+  height: 0;
+  width: 0;
+  min-height: 0;
+  min-width: 0;
+}
+.parking-quick-menu.off > li > * {
+  display: none;
+}
+.parking-quick-menu::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  background-color: var(--bg);
+  opacity: 0.7;
+  z-index: -1;
+}
+.parking-quick-menu > li {
+  max-width: 120px;
+  max-height: 120px;
+  width: 6vw;
+  height: 6vw;
+  min-width: 100px;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.parking-quick-menu > li:hover {
+  background-color: var(--td-hover);
+}
+.parking-quick-menu > li:hover svg {
+  transform: rotateY(360deg);
+  transition: all 0.3s;
+}
+.parking-quick-menu > li svg path.quick-icon-path {
+  fill: var(--text1);
+}
+.parking-quick-menu > li svg path {
+  fill: var(--color-primary);
+}
+.parking-quick-menu > li span {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  padding: 0 1vw;
+  text-align: center;
+}
 .parking-status-tile {
   width: calc(100% / 5 - 40px / 5);
   height: 203px;
@@ -1544,6 +1689,209 @@ header {
   background-color: var(--secondary-btn-bg);
   color: var(--secondary-btn-text);
 }
+/* 입출차현황 */
+.parking-tracking-tile {
+  width: calc(100% / 5 - 40px / 5);
+  border-radius: 10px;
+  box-shadow: 0 0 4px var(--line);
+  border: 1px solid var(--line);
+  padding: 20px 16px;
+}
+.parking-tracking-top {
+  margin-bottom: 25px;
+}
+.parking-tracking-top h4 {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text1);
+}
+.parking-tracking-top h4 svg path {
+  fill: var(--text1);
+}
+.parking-tracking-top .park-time {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text3);
+}
+.parking-tracking-img {
+  width: 100%;
+  height: 195px;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: var(--bg);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.parking-tracking-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.parking-tracking-img .car-info {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  width: calc(100% - 20px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.parking-tracking-img .car-info span {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--bg2);
+}
+.parking-tracking-img .car-info div {
+  border-radius: 5px;
+  border: 1px solid var(--line2);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 5px 10px;
+  background-color: var(--state-done-bg);
+  color: var(--state-done-text);
+}
+.parking-tracking-img .car-info .normal {
+  background-color: var(--state-doing-bg);
+  color: var(--state-doing-text);
+}
+.parking-tracking-bot {
+  margin-top: 15px;
+}
+.parking-tracking-tab {
+  display: flex;
+  column-gap: 10px;
+}
+.parking-tracking-tab span {
+  padding: 2px;
+  color: var(--text3);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.parking-tracking-tab span:hover,
+.parking-tracking-tab span.on {
+  color: var(--text1);
+  border-bottom: 1px solid var(--text1);
+}
+.parking-tracking-btn-wrap {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.parking-tracking-btn-wrap button {
+  width: calc(100% / 2 - 5px);
+  height: 40px;
+}
+.parking-alarm {
+  min-width: 290px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  background: rgb(140 77 240 / 80%);
+  padding: 30px 20px 40px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.parking-alarm .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+}
+.parking-alarm .alarm-bar {
+  height: 10px;
+  background-color: rgb(0, 0, 0, 0.4);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  animation: shrinkBar 5s linear forwards;
+}
+.alarm-btn {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--secondary-btn-bg);
+  color: var(--secondary-btn-text);
+}
+/* 퀵메뉴추가 모달창 */
+.add-btn {
+  position: absolute;
+  right: 90px;
+  bottom: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--secondary-btn-bg);
+  color: var(--secondary-btn-text);
+}
+.modal-backdrop {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: hsl(0deg 0% 0% / 50%);
+  backdrop-filter: blur(1px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-backdrop .modal {
+  width: 700px;
+  border-radius: 10px;
+}
+.modal-backdrop .modal .box {
+  background-color: var(--bg2);
+}
+.modal-box {
+  display: flex;
+  align-items: flex-end;
+  column-gap: 10px;
+}
+.modal-box .input,
+.modal-box .file-item {
+  width: 100%;
+}
+@keyframes shrinkBar {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+.parking-alarm .close-btn:hover {
+  background-color: rgb(0, 0, 0, 0.4);
+}
+.parking-alarm .close-btn svg path {
+  fill: var(--primary-btn-text);
+}
+.alarm-content-wrap {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+.alarm-content-wrap svg path {
+  fill: var(--primary-btn-text);
+}
+.alarm-content p {
+  font-size: 20px;
+  color: var(--primary-btn-text);
+  margin-bottom: 5px;
+}
+.alarm-content span {
+  font-size: 16px;
+  color: var(--primary-btn-text);
+}
 @media screen and (max-width: 1024px) {
   .icon-menu:hover .tooltip {
     display: none;
@@ -1557,9 +1905,25 @@ header {
   .dash-board-tile {
     width: calc(100% / 2 - 20px / 2);
   }
-}
-@media screen and (max-width: 768px) {
-  .dash-board-tile {
-    width: calc(100%);
+  .parking-quick-menu {
+    width: 32vw;
+    min-width: 280px;
+    flex-wrap: wrap;
+  }
+  .parking-quick-menu > li {
+    width: 8vw;
+    height: 8vw;
+    min-width: 70px;
+    min-height: 70px;
+    row-gap: 5px;
+  }
+  .parking-quick-menu > li svg {
+    width: 50%;
+    height: 50%;
+    flex-shrink: 0;
+  }
+  .parking-quick-menu > li span {
+    /* display: none; */
+    font-size: 14px;
   }
 }

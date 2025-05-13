@@ -48,7 +48,7 @@ const Depth2Menu = ({ isVisible, onClose, depth2Tit }) => {
           title="주차관제"
           items={[
             { to: "/parking-status", label: "실시간 주차현황" },
-            { to: "/parking-log", label: "실시간 입출차현황" },
+            { to: "/parking-tracking", label: "실시간 입출차현황" },
           ]}
         />
       </ul>

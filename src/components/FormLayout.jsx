@@ -13,6 +13,7 @@ const FormLayout = ({
   multiple,
   checked,
   setChecked,
+  onChange,
 }) => {
   const [toggleChecked, setToggleChecked] = useState(false); // ✅ toggle 상태
   const [uploadedFiles, setUploadedFiles] = useState([]); // ✅ 파일 업로드 상태
@@ -135,6 +136,7 @@ const FormLayout = ({
           type={type}
           name={title}
           placeholder={`${title}${suffix} 입력해주세요`}
+          {...(onChange ? { onChange } : {})}
         />
       )}
     </div>

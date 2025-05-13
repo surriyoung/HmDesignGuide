@@ -16,15 +16,17 @@ function DashBoard() {
 
   return (
     <div className="main-wrap dash-board-wrap">
-      <DashBoardTile title="주차포털" />
-      <DashBoardTile title="무정차정산" />
-      <DashBoardTile title="미납결제" />
-      <DashBoardTile title="비대면자격확인" />
-      <DashBoardTile title="사전결제" tasks={prePaid} />
-      <DashBoardTile title="웹할인" tasks={webDiscount} />
-      <DashBoardTile title="정기권" tasks={seasonPass} />
-      <DashBoardTile title="할인사전등록" />
-      <DashBoardTile title="주차시스템연동" tasks={parkingIntegration} />
+      <div className="main-content">
+        <DashBoardTile title="주차포털" />
+        <DashBoardTile title="무정차정산" />
+        <DashBoardTile title="미납결제" />
+        <DashBoardTile title="비대면자격확인" />
+        <DashBoardTile title="사전결제" tasks={prePaid} />
+        <DashBoardTile title="웹할인" tasks={webDiscount} />
+        <DashBoardTile title="정기권" tasks={seasonPass} />
+        <DashBoardTile title="할인사전등록" />
+        <DashBoardTile title="주차시스템연동" tasks={parkingIntegration} />
+      </div>
     </div>
   );
 }

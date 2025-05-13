@@ -3,7 +3,15 @@ import ContentTitle from "./ContentTitle";
 import Button from "./Button";
 import ArrowIcon from "../assets/icons/ArrowIcon";
 
-const BoxLayout = ({ title, toggle = false, children, onReset }) => {
+const BoxLayout = ({
+  title,
+  toggle = false,
+  modal = false,
+  children,
+  onReset = () => {},
+  doneClick = () => {},
+  cancelClick = () => {},
+}) => {
   const [isOpen, setIsOpen] = useState(true);
 
   const toggleOpen = () => {
@@ -24,6 +32,12 @@ const BoxLayout = ({ title, toggle = false, children, onReset }) => {
               <Button type="icon" onClick={toggleOpen}>
                 <ArrowIcon />
               </Button>
+            </div>
+          )}
+          {modal && (
+            <div className="btn-list">
+              <Button name="완료" type="primary" onClick={doneClick} />
+              <Button name="취소" onClick={cancelClick} />
             </div>
           )}
         </ContentTitle>

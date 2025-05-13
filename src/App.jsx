@@ -14,7 +14,7 @@ import ProfileImg from "./assets/profile.jpg";
 import TabMenuList from "./components/TabMenuList";
 import DashBoard from "./pages/DashBoard";
 import ParkingStatus from "./pages/category3/ParkingStatus";
-import ParkingLog from "./pages/category3/ParkingLog";
+import ParkingTracking from "./pages/category3/ParkingTracking";
 
 const App = () => {
   const [theme, setTheme] = useState("light");
@@ -38,8 +38,8 @@ const App = () => {
 
   return (
     <>
-      <Header theme={theme} toggleTheme={toggleTheme} user={user} />
       <Router basename="/HmDesignGuide">
+        <Header theme={theme} toggleTheme={toggleTheme} user={user} />
         <div className="main-wrapper">
           <Navbar />
           <main>
@@ -54,7 +54,7 @@ const App = () => {
               <Route path="/button" element={<ButtonGuide />} />
               <Route path="/form" element={<FormGuide />} />
               <Route path="/parking-status" element={<ParkingStatus />} />
-              <Route path="/parking-log" element={<ParkingLog />} />
+              <Route path="/parking-tracking" element={<ParkingTracking />} />
             </Routes>
           </main>
         </div>
