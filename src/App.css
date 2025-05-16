@@ -525,6 +525,7 @@ header {
 }
 .header > div {
   width: 250px;
+  text-align: center;
 }
 /* 레이아웃 */
 .main-wrapper {
